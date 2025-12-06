@@ -3,16 +3,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}Городская премия{% endblock %}</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    <title>{% block title %}Pulse Award{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
 </head>
-<body>
+<body class="{% block body_class %}{% endblock %}">
+    <div class="bg-grid"></div>
+    <div class="orb orb--one"></div>
+    <div class="orb orb--two"></div>
     <header class="site-header">
         <div class="container nav">
-            <a class="logo" href="{{ url_for('index') }}">Pulse Award</a>
-            <nav>
+            <a class="logo" href="{{ url_for('index') }}">
+                <span class="logo__dot"></span>
+                Pulse Award
+            </a>
+            <nav class="nav__links">
                 <a href="{{ url_for('index') }}">Главная</a>
                 <a href="{{ url_for('nominations_view') }}">Номинации</a>
                 <a class="cta" href="{{ url_for('vote') }}">Проголосовать</a>
@@ -34,9 +42,15 @@
     </main>
 
     <footer class="site-footer">
-        <div class="container">
-            <p>Pulse Award · цифровая премия городских проектов</p>
-            <p class="muted">Свяжитесь с нами: hello@pulse-award.local</p>
+        <div class="container footer__grid">
+            <div>
+                <p class="muted">Pulse Award · цифровая премия 2025</p>
+                <p class="muted">Крупные заголовки, смелые идеи, честный выбор сообщества.</p>
+            </div>
+            <div class="footer__actions">
+                <a class="btn ghost" href="{{ url_for('vote') }}">Перейти к голосованию</a>
+                <a class="btn primary" href="{{ url_for('nominations_view') }}">Посмотреть номинантов</a>
+            </div>
         </div>
     </footer>
 </body>

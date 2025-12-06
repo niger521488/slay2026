@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block title %}Голос уже отправлен · Pulse Award{% endblock %}
 {% block content %}
-<section class="section center warning">
+<section class="section center warning reveal">
+    <p class="eyebrow">Уведомление</p>
     <h1>Вы уже голосовали</h1>
-    <p class="muted">Мы обнаружили, что голос с этого устройства или IP уже был отправлен. Спасибо за участие!</p>
+    <p class="muted">Мы обнаружили, что с этого устройства или IP голос уже был отправлен. Спасибо за честность и участие!</p>
     <div class="actions">
         <a class="btn primary" href="{{ url_for('index') }}">Вернуться на главную</a>
     </div>

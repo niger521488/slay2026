@@ -457,11 +457,27 @@ def admin():
         ORDER BY n.id, vote_count DESC
         """
     ).fetchall()
+    results: list[dict[str, object]] = []
+    current_title: str | None = None
+    bucket: list[dict[str, int | str]] = []
 
-    data: dict[str, list[sqlite3.Row]] = {}
+    def commit_group(title: str | None, items: list[dict[str, int | str]]):
+        if title is None:
+            return
+        total = sum(int(item["count"]) for item in items)
+        for item in items:
+            item["percent"] = 0 if total == 0 else round((int(item["count"]) / total) * 100)
+        results.append({"title": title, "items": items, "total": total})
+
     for row in rows:
-        data.setdefault(row["nomination_title"], []).append(row)
-    return render_template("admin.html", results=data)
+        if current_title != row["nomination_title"]:
+            commit_group(current_title, bucket)
+            current_title = row["nomination_title"]
+            bucket = []
+        bucket.append({"name": row["nominee_name"], "count": row["vote_count"]})
+
+    commit_group(current_title, bucket)
+    return render_template("admin.html", results=results)
 
 
 @app.errorhandler(403)

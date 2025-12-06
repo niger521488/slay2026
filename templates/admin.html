@@ -1,36 +1,37 @@
 {% extends "base.html" %}
 {% block title %}Админ · Pulse Award{% endblock %}
 {% block content %}
-<section class="section">
+<section class="section reveal">
     <div class="section__header">
         <div>
             <p class="eyebrow">Админ-панель</p>
             <h1>Статистика голосов</h1>
         </div>
-        <p class="muted">Добавьте в URL параметр <code>?token=...</code> со значением переменной <code>ADMIN_TOKEN</code>.</p>
+        <p class="muted">Добавьте к URL параметр <code>?token=...</code> со значением переменной <code>ADMIN_TOKEN</code>.</p>
     </div>
 
-    {% for nomination_title, items in results.items() %}
-        <div class="card">
-            <div class="card__header">
-                <h2>{{ nomination_title }}</h2>
+    {% for block in results %}
+        <div class="card admin-card">
+            <div class="card__header admin-head">
+                <div>
+                    <p class="eyebrow">Номинация</p>
+                    <h2>{{ block.title }}</h2>
+                </div>
+                <div class="pill">Всего голосов: {{ block.total }}</div>
             </div>
-            <table class="votes-table">
-                <thead>
-                    <tr>
-                        <th>Номинант</th>
-                        <th>Голосов</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for row in items %}
-                        <tr>
-                            <td>{{ row.nominee_name }}</td>
-                            <td>{{ row.vote_count }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            <div class="votes-list">
+                {% for item in block.items %}
+                    <div class="vote-row">
+                        <div class="vote-row__top">
+                            <span class="name">{{ item.name }}</span>
+                            <span class="count">{{ item.count }}</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress__bar" style="width: {{ item.percent }}%"></div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     {% endfor %}
 </section>

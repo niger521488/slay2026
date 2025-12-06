@@ -1,21 +1,26 @@
 {% extends "base.html" %}
 {% block title %}Голосование · Pulse Award{% endblock %}
 {% block content %}
-<section class="section">
+<section class="section reveal">
     <div class="section__header">
         <div>
             <p class="eyebrow">Голосование</p>
-            <h1>Отдайте голос за лучших</h1>
+            <h1>Выбирайте ярких представителей</h1>
         </div>
-        <p class="muted">Один пользователь — один голос. Мы защищаем результаты через cookie и IP.</p>
+        <p class="muted">Один пользователь — один голос. Заполните все категории и отправьте выбор.</p>
     </div>
 
     <form class="vote-form" method="post">
         {% for nomination in nominations %}
             <div class="card vote-card">
                 <div class="card__header">
-                    <h2>{{ nomination.title }}</h2>
-                    <p class="muted">{{ nomination.description }}</p>
+                    <div class="card__top">
+                        <span class="badge badge--soft">{{ loop.cycle('👑','💫','🔥','⚡️','🌈','🎭','🪐','🎯','🌿','💎','🚀','🎉') }}</span>
+                        <div>
+                            <h2>{{ nomination.title }}</h2>
+                            <p class="muted">{{ nomination.description }}</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="vote-options">
                     {% for nominee in nomination.nominees %}
@@ -28,13 +33,14 @@
                                     <small>{{ nominee.description }}</small>
                                 </span>
                             </span>
+                            <span class="checkmark"></span>
                         </label>
                     {% endfor %}
                 </div>
             </div>
         {% endfor %}
         <div class="form-actions">
-            <button class="btn primary" type="submit">Отправить голос</button>
+            <button class="btn primary btn-large" type="submit">Отправить голос</button>
         </div>
     </form>
 </section>

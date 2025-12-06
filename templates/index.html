@@ -1,66 +1,89 @@
 {% extends "base.html" %}
-{% block title %}Pulse Award · главная{% endblock %}
+{% block title %}Pulse Award · Главная{% endblock %}
 {% block content %}
-<section class="hero">
+<section class="hero reveal">
     <div class="hero__text">
-        <p class="eyebrow">Городской импульс</p>
-        <h1>Премия за смелые креативные проекты</h1>
-        <p class="lede">Pulse Award отмечает людей и команды, которые делают культурную жизнь города ярче. Голосуйте за номинантов и помогите выбрать лучшие инициативы года.</p>
+        <p class="eyebrow">Pulse Award 2025</p>
+        <h1>Цифровая премия, которая чувствует вайб города</h1>
+        <p class="lede">Отмечаем самых смелых, ярких и неожиданных. Голосуйте за людей, которые делают комьюнити живым — от харизматичных лидеров до главных мем-мейкеров.</p>
         <div class="actions">
-            <a class="btn primary" href="{{ url_for('vote') }}">Проголосовать</a>
-            <a class="btn ghost" href="{{ url_for('nominations_view') }}">Узнать о номинантах</a>
+            <a class="btn primary" href="{{ url_for('vote') }}">Перейти к голосованию</a>
+            <a class="btn ghost" href="{{ url_for('nominations_view') }}">Все номинации</a>
+        </div>
+        <div class="hero__stats">
+            <div class="stat">
+                <span class="stat__value">{{ nominations|length }}</span>
+                <span class="stat__label">номинаций</span>
+            </div>
+            <div class="stat">
+                <span class="stat__value">1</span>
+                <span class="stat__label">голос на участника</span>
+            </div>
+            <div class="stat">
+                <span class="stat__value">24/7</span>
+                <span class="stat__label">онлайн-голосование</span>
+            </div>
         </div>
     </div>
-    <div class="hero__card">
-        <p>Награждение 2024</p>
-        <h3>{{ nominations|length }} номинации</h3>
-        <ul>
+    <div class="hero__card glass">
+        <div class="pill">Городской вайб</div>
+        <h3>Смотри, кто на пике внимания</h3>
+        <ul class="hero-list">
             {% for nomination in nominations %}
-                <li>{{ nomination.title }}</li>
+                <li>
+                    <span>{{ loop.index }}.</span>
+                    <div>
+                        <strong>{{ nomination.title }}</strong>
+                        <p>{{ nomination.description }}</p>
+                    </div>
+                </li>
             {% endfor %}
         </ul>
     </div>
 </section>
 
-<section class="section">
+<section class="section reveal" id="about">
     <div class="section__header">
         <div>
             <p class="eyebrow">Как это работает</p>
-            <h2>Три шага к победе</h2>
+            <h2>Три шага до победы</h2>
         </div>
-        <div class="muted">Голосование открыто до конца месяца. Один пользователь — один голос.</div>
+        <div class="muted">Один пользователь — один голос. Защищаем честность через cookie и IP.</div>
     </div>
     <div class="grid steps">
         <div class="card step">
             <span class="step__badge">1</span>
-            <h3>Изучите номинации</h3>
-            <p>Узнайте, кто попал в шорт-лист и чем они выделились.</p>
+            <h3>Смотри номинантов</h3>
+            <p>Изучите короткие профили участников и выберите фаворитов.</p>
         </div>
         <div class="card step">
             <span class="step__badge">2</span>
-            <h3>Отдайте голос</h3>
-            <p>Выберите по одному номинанту в каждой категории и отправьте форму.</p>
+            <h3>Ставь галочки</h3>
+            <p>Отметьте по одному кандидату в каждой категории и отправьте голос.</p>
         </div>
         <div class="card step">
             <span class="step__badge">3</span>
-            <h3>Следите за итогами</h3>
-            <p>Результаты объявим на церемонии и опубликуем на сайте.</p>
+            <h3>Следи за итогами</h3>
+            <p>После закрытия голосования публикуем результаты и объявляем победителей.</p>
         </div>
     </div>
 </section>
 
-<section class="section alt">
+<section class="section alt reveal" id="noms-preview">
     <div class="section__header">
         <div>
             <p class="eyebrow">Номинации</p>
-            <h2>Кого мы отмечаем</h2>
+            <h2>Каждая категория — отдельная история</h2>
         </div>
-        <a class="btn ghost" href="{{ url_for('nominations_view') }}">Смотреть все</a>
+        <a class="btn ghost" href="{{ url_for('nominations_view') }}">Смотреть всех номинантов</a>
     </div>
     <div class="grid nominees-grid">
         {% for nomination in nominations %}
-            <div class="card">
-                <h3>{{ nomination.title }}</h3>
+            <div class="card nom-preview">
+                <div class="card__top">
+                    <span class="badge">#{{ loop.index }}</span>
+                    <h3>{{ nomination.title }}</h3>
+                </div>
                 <p class="muted">{{ nomination.description }}</p>
                 <ul class="pill-list">
                     {% for nominee in nomination.nominees %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Номинации и номинанты · Pulse Award{% endblock %}
 {% block content %}
-<section class="section">
+<section class="section reveal">
     <div class="section__header">
         <div>
             <p class="eyebrow">Номинации</p>
@@ -11,10 +11,15 @@
     </div>
     <div class="grid nominees-grid">
         {% for nomination in nominations %}
-            <article class="card">
+            <article class="card nominee-card">
                 <header class="card__header">
-                    <h2>{{ nomination.title }}</h2>
-                    <p class="muted">{{ nomination.description }}</p>
+                    <div class="card__top">
+                        <span class="badge">{{ loop.cycle('👑','💫','🔥','⚡️','🌈','🎭','🪐','🎯','🌿','💎','🚀','🎉') }}</span>
+                        <div>
+                            <h2>{{ nomination.title }}</h2>
+                            <p class="muted">{{ nomination.description }}</p>
+                        </div>
+                    </div>
                 </header>
                 <div class="nominee-list">
                     {% for nominee in nomination.nominees %}
