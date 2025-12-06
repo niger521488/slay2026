@@ -63,267 +63,113 @@ def init_db():
     db.close()
 
 
+NOMINEE_POOL = [
+    "Захар",
+    "Артем М.",
+    "Маша",
+    "Катя",
+    "Тимур",
+    "Ярик",
+    "Артем Х.",
+    "Славик",
+    "Самбор",
+    "Егор",
+    "Марк",
+    "Денис",
+    "Сана",
+    "Назар",
+    "Арина",
+    "Рита",
+    "Яра",
+    "Андрей",
+    "Саня",
+    "Леха",
+    "Олег",
+    "Даша",
+]
+
+
+def build_nominee_entries() -> list[dict[str, str | None]]:
+    return [
+        {
+            "name": name,
+            "description": "Своя легенда нашего круга — в этой категории.",
+            "photo_url": None,
+        }
+        for name in NOMINEE_POOL
+    ]
+
+
 DEFAULT_NOMINATIONS = [
     {
         "title": "King года",
         "description": "Человек, который всегда ведет себя так, будто он главный и все это поддерживают.",
-        "nominees": [
-            {
-                "name": "Король сценария",
-                "description": "Всегда берет лидерство и задаёт тон компании.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=King+1",
-            },
-            {
-                "name": "Командир",
-                "description": "Организует процессы и направляет остальных.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=King+2",
-            },
-            {
-                "name": "Шеф",
-                "description": "Всегда знает, что делать, и другие следуют.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=King+3",
-            },
-        ],
+        "nominees": build_nominee_entries(),
     },
     {
         "title": "Queen года",
-        "description": "Персона с эффектной подачей: стиль, эмоции, жесты.",
-        "nominees": [
-            {
-                "name": "Икона",
-                "description": "Всегда эффектна и умеет подать себя.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Queen+1",
-            },
-            {
-                "name": "Дива",
-                "description": "Эмоции, жесты и харизма на максимум.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Queen+2",
-            },
-            {
-                "name": "Муза",
-                "description": "Задаёт стиль и вдохновляет окружающих.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Queen+3",
-            },
-        ],
+        "description": "Персона с эффектной подачей,стиль, эмоции, жесты.",
+        "nominees": build_nominee_entries(),
     },
     {
         "title": "Мем года",
         "description": "Источник самых смешных моментов года.",
-        "nominees": [
-            {
-                "name": "Легендарная шутка",
-                "description": "Фраза, которую цитируют снова и снова.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Meme+1",
-            },
-            {
-                "name": "Гэг недели",
-                "description": "Всегда вовремя вставляет смешной момент.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Meme+2",
-            },
-            {
-                "name": "Вечный мем",
-                "description": "Шутка, которая стала частью разговоров.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Meme+3",
-            },
-        ],
+        "nominees": build_nominee_entries(),
     },
     {
         "title": "Человек мем года",
         "description": "Главный генератор мемов.",
-        "nominees": [
-            {
-                "name": "Герой шуток",
-                "description": "Превращает любое событие в смешной мем.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Memer+1",
-            },
-            {
-                "name": "Создатель смеха",
-                "description": "Придумывает новые форматы и приколы.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Memer+2",
-            },
-            {
-                "name": "Главный вайбер",
-                "description": "Делает чат смешным каждый день.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Memer+3",
-            },
-        ],
+        "nominees": build_nominee_entries(),
     },
     {
         "title": "Нон актив года",
         "description": "Тот кого как будто «нету».",
-        "nominees": [
-            {
-                "name": "Тихий наблюдатель",
-                "description": "Редко пишет, но всегда в теме.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Silent+1",
-            },
-            {
-                "name": "Призрак чата",
-                "description": "Присутствует, но не проявляется.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Silent+2",
-            },
-            {
-                "name": "Скрытый читатель",
-                "description": "Всегда читает, почти не пишет.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Silent+3",
-            },
-        ],
+        "nominees": build_nominee_entries(),
     },
     {
         "title": "Долбоеб года",
-        "description": "Без объяснений.",
-        "nominees": [
-            {
-                "name": "Случайный герой",
-                "description": "Главный источник фейлов года.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Facepalm+1",
-            },
-            {
-                "name": "Хаос-мейкер",
-                "description": "Создаёт абсурдные ситуации.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Facepalm+2",
-            },
-            {
-                "name": "Эпичный ляп",
-                "description": "За серию нелепых решений.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Facepalm+3",
-            },
-        ],
+        "description": "Без объяснений",
+        "nominees": build_nominee_entries(),
     },
     {
         "title": "Харизма года",
         "description": "Человек, который просто появляется — и настроение у всех становится лучше.",
-        "nominees": [
-            {
-                "name": "Солнечный",
-                "description": "Приносит тепло и улыбки.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Charisma+1",
-            },
-            {
-                "name": "Магнетический",
-                "description": "Притягивает внимание и вдохновение.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Charisma+2",
-            },
-            {
-                "name": "Вдохновитель",
-                "description": "Поднимает настроение одним появлением.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Charisma+3",
-            },
-        ],
+        "nominees": build_nominee_entries(),
     },
     {
         "title": "Пунктуальность года",
         "description": "Без объяснений.",
-        "nominees": [
-            {
-                "name": "Тайм-менеджер",
-                "description": "Приходит вовремя и напоминает другим.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Punctual+1",
-            },
-            {
-                "name": "Ровно в час",
-                "description": "Всегда к дедлайну, без опозданий.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Punctual+2",
-            },
-            {
-                "name": "Секундомер",
-                "description": "Знает цену минутам.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Punctual+3",
-            },
-        ],
+        "nominees": build_nominee_entries(),
     },
     {
         "title": "Токсик года",
         "description": "Мастер колких комментариев и пассивной агрессии. Иногда бесит, но всегда добавляет специй в беседу.",
-        "nominees": [
-            {
-                "name": "Сарказм мастер",
-                "description": "Колкие реплики в любой ситуации.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Toxic+1",
-            },
-            {
-                "name": "Ироничный",
-                "description": "Любит поддеть и уколоть.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Toxic+2",
-            },
-            {
-                "name": "Пассивный агрессор",
-                "description": "Комменты с перчинкой.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Toxic+3",
-            },
-        ],
+        "nominees": build_nominee_entries(),
     },
     {
         "title": "Лентяй года",
         "description": "Тот которому всегда лень.",
-        "nominees": [
-            {
-                "name": "Соня",
-                "description": "Любит отложить дела на завтра.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Lazy+1",
-            },
-            {
-                "name": "Прокрастинатор",
-                "description": "Всегда найдёт повод ничего не делать.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Lazy+2",
-            },
-            {
-                "name": "Диванный эксперт",
-                "description": "Комментирует, но не делает.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Lazy+3",
-            },
-        ],
+        "nominees": build_nominee_entries(),
     },
     {
         "title": "Актив года",
         "description": "Самый активный участник группы, инициатор.",
-        "nominees": [
-            {
-                "name": "Двигатель",
-                "description": "Запускает новые инициативы.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Active+1",
-            },
-            {
-                "name": "Организатор",
-                "description": "Собирает всех на события и обсуждения.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Active+2",
-            },
-            {
-                "name": "Катализатор",
-                "description": "Подталкивает к действиям и решениям.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Active+3",
-            },
-        ],
+        "nominees": build_nominee_entries(),
     },
     {
         "title": "Завоз года",
         "description": "Тот, кто внезапно завёз лучший вайб, идеи, шутки или стиль.",
-        "nominees": [
-            {
-                "name": "Вайбмейкер",
-                "description": "Привнёс лучшие настроения.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Vibe+1",
-            },
-            {
-                "name": "Идейный драйвер",
-                "description": "Подкинул свежие идеи и шутки.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Vibe+2",
-            },
-            {
-                "name": "Стилевик",
-                "description": "Привёз стиль и настроение.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Vibe+3",
-            },
-        ],
+        "nominees": build_nominee_entries(),
     },
 ]
-
 
 def seed_default_data():
     db = get_db()
     existing = db.execute("SELECT COUNT(*) AS total FROM nominations").fetchone()
+    nominee_total = db.execute("SELECT COUNT(*) AS total FROM nominees").fetchone()
     expected_total = len(DEFAULT_NOMINATIONS)
-    if existing["total"] != expected_total:
+    expected_nominees = expected_total * len(NOMINEE_POOL)
+    if existing["total"] != expected_total or nominee_total["total"] != expected_nominees:
         db.execute("DELETE FROM votes")
         db.execute("DELETE FROM nominees")
         db.execute("DELETE FROM nominations")

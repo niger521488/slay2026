@@ -27,7 +27,7 @@
                         <label class="vote-option">
                             <input type="radio" name="nomination_{{ nomination.id }}" value="{{ nominee.id }}" required>
                             <span class="option-content">
-                                <img src="{{ nominee.photo_url }}" alt="{{ nominee.name }}">
+                                <span class="avatar">{{ nominee.name[0] }}</span>
                                 <span>
                                     <strong>{{ nominee.name }}</strong>
                                     <small>{{ nominee.description }}</small>

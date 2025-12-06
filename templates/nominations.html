@@ -22,15 +22,9 @@
                         </div>
                     </div>
                 </header>
-                <div class="nominee-list">
+                <div class="nominee-pills">
                     {% for nominee in nomination.nominees %}
-                        <div class="nominee">
-                            <img src="{{ nominee.photo_url }}" alt="{{ nominee.name }}">
-                            <div>
-                                <h3>{{ nominee.name }}</h3>
-                                <p class="muted">{{ nominee.description }}</p>
-                            </div>
-                        </div>
+                        <span class="pill-tag">{{ nominee.name }}</span>
                     {% endfor %}
                 </div>
             </article>
