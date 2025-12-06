@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Спасибо за голос · Pulse Award{% endblock %}
+{% block content %}
+<section class="section center">
+    <h1>Спасибо, ваш голос учтён</h1>
+    <p class="muted">Мы записали ваш выбор. Итоги опубликуем после завершения голосования.</p>
+    <div class="actions">
+        <a class="btn primary" href="{{ url_for('index') }}">На главную</a>
+        <a class="btn ghost" href="{{ url_for('nominations_view') }}">Посмотреть номинантов</a>
+    </div>
+</section>
+{% endblock %}

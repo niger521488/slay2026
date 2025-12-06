@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Голосование · Pulse Award{% endblock %}
+{% block content %}
+<section class="section">
+    <div class="section__header">
+        <div>
+            <p class="eyebrow">Голосование</p>
+            <h1>Отдайте голос за лучших</h1>
+        </div>
+        <p class="muted">Один пользователь — один голос. Мы защищаем результаты через cookie и IP.</p>
+    </div>
+
+    <form class="vote-form" method="post">
+        {% for nomination in nominations %}
+            <div class="card vote-card">
+                <div class="card__header">
+                    <h2>{{ nomination.title }}</h2>
+                    <p class="muted">{{ nomination.description }}</p>
+                </div>
+                <div class="vote-options">
+                    {% for nominee in nomination.nominees %}
+                        <label class="vote-option">
+                            <input type="radio" name="nomination_{{ nomination.id }}" value="{{ nominee.id }}" required>
+                            <span class="option-content">
+                                <img src="{{ nominee.photo_url }}" alt="{{ nominee.name }}">
+                                <span>
+                                    <strong>{{ nominee.name }}</strong>
+                                    <small>{{ nominee.description }}</small>
+                                </span>
+                            </span>
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="form-actions">
+            <button class="btn primary" type="submit">Отправить голос</button>
+        </div>
+    </form>
+</section>
+{% endblock %}

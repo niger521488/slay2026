@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Pulse Award · главная{% endblock %}
+{% block content %}
+<section class="hero">
+    <div class="hero__text">
+        <p class="eyebrow">Городской импульс</p>
+        <h1>Премия за смелые креативные проекты</h1>
+        <p class="lede">Pulse Award отмечает людей и команды, которые делают культурную жизнь города ярче. Голосуйте за номинантов и помогите выбрать лучшие инициативы года.</p>
+        <div class="actions">
+            <a class="btn primary" href="{{ url_for('vote') }}">Проголосовать</a>
+            <a class="btn ghost" href="{{ url_for('nominations_view') }}">Узнать о номинантах</a>
+        </div>
+    </div>
+    <div class="hero__card">
+        <p>Награждение 2024</p>
+        <h3>{{ nominations|length }} номинации</h3>
+        <ul>
+            {% for nomination in nominations %}
+                <li>{{ nomination.title }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section__header">
+        <div>
+            <p class="eyebrow">Как это работает</p>
+            <h2>Три шага к победе</h2>
+        </div>
+        <div class="muted">Голосование открыто до конца месяца. Один пользователь — один голос.</div>
+    </div>
+    <div class="grid steps">
+        <div class="card step">
+            <span class="step__badge">1</span>
+            <h3>Изучите номинации</h3>
+            <p>Узнайте, кто попал в шорт-лист и чем они выделились.</p>
+        </div>
+        <div class="card step">
+            <span class="step__badge">2</span>
+            <h3>Отдайте голос</h3>
+            <p>Выберите по одному номинанту в каждой категории и отправьте форму.</p>
+        </div>
+        <div class="card step">
+            <span class="step__badge">3</span>
+            <h3>Следите за итогами</h3>
+            <p>Результаты объявим на церемонии и опубликуем на сайте.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section alt">
+    <div class="section__header">
+        <div>
+            <p class="eyebrow">Номинации</p>
+            <h2>Кого мы отмечаем</h2>
+        </div>
+        <a class="btn ghost" href="{{ url_for('nominations_view') }}">Смотреть все</a>
+    </div>
+    <div class="grid nominees-grid">
+        {% for nomination in nominations %}
+            <div class="card">
+                <h3>{{ nomination.title }}</h3>
+                <p class="muted">{{ nomination.description }}</p>
+                <ul class="pill-list">
+                    {% for nominee in nomination.nominees %}
+                        <li>{{ nominee.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

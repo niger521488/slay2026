@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Номинации и номинанты · Pulse Award{% endblock %}
+{% block content %}
+<section class="section">
+    <div class="section__header">
+        <div>
+            <p class="eyebrow">Номинации</p>
+            <h1>Список номинантов</h1>
+        </div>
+        <a class="btn primary" href="{{ url_for('vote') }}">Перейти к голосованию</a>
+    </div>
+    <div class="grid nominees-grid">
+        {% for nomination in nominations %}
+            <article class="card">
+                <header class="card__header">
+                    <h2>{{ nomination.title }}</h2>
+                    <p class="muted">{{ nomination.description }}</p>
+                </header>
+                <div class="nominee-list">
+                    {% for nominee in nomination.nominees %}
+                        <div class="nominee">
+                            <img src="{{ nominee.photo_url }}" alt="{{ nominee.name }}">
+                            <div>
+                                <h3>{{ nominee.name }}</h3>
+                                <p class="muted">{{ nominee.description }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
