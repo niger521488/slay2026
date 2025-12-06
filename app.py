@@ -65,65 +65,254 @@ def init_db():
 
 DEFAULT_NOMINATIONS = [
     {
-        "title": "Лучший музыкальный артист",
-        "description": "Артисты, чьи треки звучали чаще всего в этом году.",
+        "title": "King года",
+        "description": "Человек, который всегда ведет себя так, будто он главный и все это поддерживают.",
         "nominees": [
             {
-                "name": "Nova Light",
-                "description": "Электронный продюсер с новым взглядом на EDM.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=Nova+Light",
+                "name": "Король сценария",
+                "description": "Всегда берет лидерство и задаёт тон компании.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=King+1",
             },
             {
-                "name": "Маяк",
-                "description": "Инди-группа, которая покорила фестивали летом.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=%D0%9C%D0%B0%D1%8F%D0%BA",
+                "name": "Командир",
+                "description": "Организует процессы и направляет остальных.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=King+2",
             },
             {
-                "name": "RAPID",
-                "description": "Хип-хоп исполнитель с сильными текстами.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=RAPID",
+                "name": "Шеф",
+                "description": "Всегда знает, что делать, и другие следуют.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=King+3",
             },
         ],
     },
     {
-        "title": "Дебют года",
-        "description": "Новички, которые громко заявили о себе.",
+        "title": "Queen года",
+        "description": "Персона с эффектной подачей: стиль, эмоции, эмоции, жесты.",
         "nominees": [
             {
-                "name": "Север",
-                "description": "Альтернативный исполнитель с атмосферными клипами.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=%D0%A1%D0%B5%D0%B2%D0%B5%D1%80",
+                "name": "Икона",
+                "description": "Всегда эффектна и умеет подать себя.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Queen+1",
             },
             {
-                "name": "LUNA",
-                "description": "Поп-певица с футуристичным звучанием.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=LUNA",
+                "name": "Дива",
+                "description": "Эмоции, жесты и харизма на максимум.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Queen+2",
             },
             {
-                "name": "Орбита",
-                "description": "Группа, совмещающая рок и электронику.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=%D0%9E%D1%80%D0%B1%D0%B8%D1%82%D0%B0",
+                "name": "Муза",
+                "description": "Задаёт стиль и вдохновляет окружающих.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Queen+3",
             },
         ],
     },
     {
-        "title": "Лучшее шоу",
-        "description": "Сценические постановки, которые впечатлили визуально.",
+        "title": "Мем года",
+        "description": "Источник самых смешных моментов года.",
         "nominees": [
             {
-                "name": "Дыхание города",
-                "description": "Иммерсивное шоу со световыми инсталляциями.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=%D0%94%D1%8B%D1%85%D0%B0%D0%BD%D0%B8%D0%B5+%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B0",
+                "name": "Легендарная шутка",
+                "description": "Фраза, которую цитируют снова и снова.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Meme+1",
             },
             {
-                "name": "Эхо",
-                "description": "Театральный перформанс с AR-элементами.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=%D0%AD%D1%85%D0%BE",
+                "name": "Гэг недели",
+                "description": "Всегда вовремя вставляет смешной момент.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Meme+2",
             },
             {
-                "name": "Вихрь",
-                "description": "Шоу-дронов над набережной.",
-                "photo_url": "https://via.placeholder.com/320x200.png?text=%D0%92%D0%B8%D1%85%D1%80%D1%8C",
+                "name": "Вечный мем",
+                "description": "Шутка, которая стала частью разговоров.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Meme+3",
+            },
+        ],
+    },
+    {
+        "title": "Человек-мем года",
+        "description": "Главный генератор мемов.",
+        "nominees": [
+            {
+                "name": "Герой шуток",
+                "description": "Превращает любое событие в смешной мем.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Memer+1",
+            },
+            {
+                "name": "Создатель смеха",
+                "description": "Придумывает новые форматы и приколы.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Memer+2",
+            },
+            {
+                "name": "Главный вайбер",
+                "description": "Делает чат смешным каждый день.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Memer+3",
+            },
+        ],
+    },
+    {
+        "title": "Нон актив года",
+        "description": "Тот, кого как будто «нету».",
+        "nominees": [
+            {
+                "name": "Тихий наблюдатель",
+                "description": "Редко пишет, но всегда в теме.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Silent+1",
+            },
+            {
+                "name": "Призрак чата",
+                "description": "Присутствует, но не проявляется.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Silent+2",
+            },
+            {
+                "name": "Скрытый читатель",
+                "description": "Всегда читает, почти не пишет.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Silent+3",
+            },
+        ],
+    },
+    {
+        "title": "Долбоеб года",
+        "description": "Без объяснений.",
+        "nominees": [
+            {
+                "name": "Случайный герой",
+                "description": "Главный источник фейлов года.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Facepalm+1",
+            },
+            {
+                "name": "Хаос-мейкер",
+                "description": "Создаёт абсурдные ситуации.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Facepalm+2",
+            },
+            {
+                "name": "Эпичный ляп",
+                "description": "За серию нелепых решений.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Facepalm+3",
+            },
+        ],
+    },
+    {
+        "title": "Харизма года",
+        "description": "Человек, который просто появляется — и настроение у всех становится лучше.",
+        "nominees": [
+            {
+                "name": "Солнечный",
+                "description": "Приносит тепло и улыбки.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Charisma+1",
+            },
+            {
+                "name": "Магнетический",
+                "description": "Притягивает внимание и вдохновение.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Charisma+2",
+            },
+            {
+                "name": "Вдохновитель",
+                "description": "Поднимает настроение одним появлением.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Charisma+3",
+            },
+        ],
+    },
+    {
+        "title": "Пунктуальность года",
+        "description": "Без объяснений.",
+        "nominees": [
+            {
+                "name": "Тайм-менеджер",
+                "description": "Приходит вовремя и напоминает другим.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Punctual+1",
+            },
+            {
+                "name": "Ровно в час",
+                "description": "Всегда к дедлайну, без опозданий.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Punctual+2",
+            },
+            {
+                "name": "Секундомер",
+                "description": "Знает цену минутам.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Punctual+3",
+            },
+        ],
+    },
+    {
+        "title": "Токсик года",
+        "description": "Мастер колких комментариев и пассивной агрессии.",
+        "nominees": [
+            {
+                "name": "Сарказм мастер",
+                "description": "Колкие реплики в любой ситуации.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Toxic+1",
+            },
+            {
+                "name": "Ироничный",
+                "description": "Любит поддеть и уколоть.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Toxic+2",
+            },
+            {
+                "name": "Пассивный агрессор",
+                "description": "Комменты с перчинкой.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Toxic+3",
+            },
+        ],
+    },
+    {
+        "title": "Лентяй года",
+        "description": "Тот, которому всегда лень.",
+        "nominees": [
+            {
+                "name": "Соня",
+                "description": "Любит отложить дела на завтра.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Lazy+1",
+            },
+            {
+                "name": "Прокрастинатор",
+                "description": "Всегда найдёт повод ничего не делать.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Lazy+2",
+            },
+            {
+                "name": "Диванный эксперт",
+                "description": "Комментирует, но не делает.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Lazy+3",
+            },
+        ],
+    },
+    {
+        "title": "Актив года",
+        "description": "Самый активный участник группы, инициатор.",
+        "nominees": [
+            {
+                "name": "Двигатель",
+                "description": "Запускает новые инициативы.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Active+1",
+            },
+            {
+                "name": "Организатор",
+                "description": "Собирает всех на события и обсуждения.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Active+2",
+            },
+            {
+                "name": "Катализатор",
+                "description": "Подталкивает к действиям и решениям.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Active+3",
+            },
+        ],
+    },
+    {
+        "title": "Завоз года",
+        "description": "Тот, кто внезапно завёз лучший вайб, идеи, шутки или стиль.",
+        "nominees": [
+            {
+                "name": "Вайбмейкер",
+                "description": "Привнёс лучшие настроения.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Vibe+1",
+            },
+            {
+                "name": "Идейный драйвер",
+                "description": "Подкинул свежие идеи и шутки.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Vibe+2",
+            },
+            {
+                "name": "Стилевик",
+                "description": "Привёз стиль и настроение.",
+                "photo_url": "https://via.placeholder.com/320x200.png?text=Vibe+3",
             },
         ],
     },
@@ -151,8 +340,8 @@ def seed_default_data():
                 (
                     nomination_id,
                     nominee["name"],
-                    nominee["description"],
-                    nominee["photo_url"],
+                    nominee.get("description"),
+                    nominee.get("photo_url"),
                 ),
             )
     db.commit()
