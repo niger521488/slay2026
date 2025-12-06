@@ -172,13 +172,18 @@ body {
     color: #080b16;
     box-shadow: 0 12px 32px rgba(124,58,237,0.35);
 }
-.btn.ghost { border-color: var(--border); color: var(--text); background: rgba(255,255,255,0.04); }
+.btn.ghost { border-color: rgba(255,255,255,0.18); color: var(--text); background: rgba(255,255,255,0.06); box-shadow: 0 10px 24px rgba(0,0,0,0.25); }
 .btn:hover { transform: translateY(-2px); }
 .btn-large { padding: 14px 22px; font-size: 1rem; }
+
+.footer__actions .btn { min-width: 170px; text-align: center; }
 
 .actions { display: flex; gap: 12px; align-items: center; margin-top: 16px; flex-wrap: wrap; }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+
+.info-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.info-card { border: 1px dashed var(--border); background: linear-gradient(145deg, rgba(124,58,237,0.05), rgba(34,211,238,0.05)); }
 
 .card {
     background: var(--card);
