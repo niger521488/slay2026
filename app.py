@@ -322,8 +322,11 @@ DEFAULT_NOMINATIONS = [
 def seed_default_data():
     db = get_db()
     existing = db.execute("SELECT COUNT(*) AS total FROM nominations").fetchone()
-    if existing["total"] > 0:
-        return
+    expected_total = len(DEFAULT_NOMINATIONS)
+    if existing["total"] != expected_total:
+        db.execute("DELETE FROM votes")
+        db.execute("DELETE FROM nominees")
+        db.execute("DELETE FROM nominations")
 
     for nomination in DEFAULT_NOMINATIONS:
         cursor = db.execute(
