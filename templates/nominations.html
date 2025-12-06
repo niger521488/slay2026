@@ -8,7 +8,21 @@
             <h1>Список номинантов</h1>
             <p class="muted">Каждая категория — про реальный вклад в наш чат и встречи. Мы собрали живые описания и добавили чуть-чуть вайба, чтобы выбрать лучших среди своих.</p>
         </div>
-        <a class="btn primary" href="{{ url_for('vote') }}">Перейти к голосованию</a>
+        <div class="actions">
+            <a class="btn ghost" href="{{ url_for('index') }}">На главную</a>
+            <a class="btn primary" href="{{ url_for('vote') }}">Перейти к голосованию</a>
+        </div>
+    </div>
+    <div class="info-ribbon">
+        <div>
+            <p class="eyebrow">Голосуем сердцем</p>
+            <p class="muted">Празднуем людей, которые смеялись с нами, тащили проекты, спасали дедлайны и просто появлялись вовремя. Без официоза: только живые истории.</p>
+        </div>
+        <div class="ribbon-actions">
+            <span class="pill">12 категорий</span>
+            <span class="pill">22 друга</span>
+            <span class="pill">1 голос на каждого</span>
+        </div>
     </div>
     <div class="grid nominees-grid">
         {% for nomination in nominations %}

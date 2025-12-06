@@ -171,6 +171,9 @@ body {
     transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
     min-height: 46px;
     white-space: nowrap;
+    cursor: pointer;
+    appearance: none;
+    font: inherit;
 }
 .btn.primary {
     background: linear-gradient(120deg, var(--accent), var(--accent-2));
@@ -229,6 +232,8 @@ body {
 
 .pill-list { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .pill-list li { padding: 8px 12px; background: rgba(34,211,238,0.08); border-radius: 999px; color: var(--text); font-size: .92rem; border: 1px solid var(--border); }
+.pill-list--dense { gap: 6px; }
+.pill-list--dense li { background: rgba(255,255,255,0.08); }
 
 .nominee-pills {
     display: grid;
@@ -236,6 +241,24 @@ body {
     gap: 10px;
     margin-top: 14px;
 }
+
+.info-ribbon, .vote-legend {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+    padding: 18px 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: linear-gradient(120deg, rgba(124,58,237,0.08), rgba(34,211,238,0.06));
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+}
+
+.ribbon-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+
+.mini-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 12px; }
+.mini-stats p { margin: 4px 0; }
 
 .pill-tag {
     padding: 10px 12px;
@@ -300,6 +323,7 @@ body {
 }
 
 .form-actions { margin-top: 22px; text-align: right; }
+.form-actions { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; }
 
 .site-footer {
     border-top: 1px solid var(--border);
@@ -374,6 +398,7 @@ body {
     .nav__links a { padding: 8px 10px; }
     .nominee { grid-template-columns: 90px 1fr; }
     .card { padding: 18px; }
+    .info-ribbon, .vote-legend { flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 640px) {

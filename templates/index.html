@@ -69,6 +69,54 @@
     </div>
 </section>
 
+<section class="section reveal" id="squad">
+    <div class="section__header">
+        <div>
+            <p class="eyebrow">Дружеский состав</p>
+            <h2>22 человека в строю — от Захара до Даши</h2>
+        </div>
+        <a class="btn ghost" href="{{ url_for('nominations_view') }}">Посмотреть всех</a>
+    </div>
+    <div class="grid info-grid">
+        <div class="card info-card">
+            <h3>Кто в игре</h3>
+            <p class="muted">Мы собрали всех, кто держал чат живым: лидеры, мемологи, организаторы и те, кто приходит вовремя. Каждый — часть общего движухи.</p>
+            <ul class="pill-list pill-list--dense">
+                {% set people = nominations[0].nominees if nominations else [] %}
+                {% for person in people %}
+                    <li>{{ person.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="card info-card">
+            <h3>Зачем голосовать</h3>
+            <p class="muted">Это не про формальности: мы отмечаем, кто нас смешил, вдохновлял, выручал и заряжал. Твой голос — признание для друга.</p>
+            <div class="mini-stats">
+                <div>
+                    <p class="eyebrow">12</p>
+                    <p class="muted">Категорий, которые показывают всю палитру нашего круга.</p>
+                </div>
+                <div>
+                    <p class="eyebrow">22</p>
+                    <p class="muted">Участника, каждому есть за что поставить лайк и голос.</p>
+                </div>
+                <div>
+                    <p class="eyebrow">1</p>
+                    <p class="muted">Честное правило: один голос — одна любовь.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card info-card">
+            <h3>Как мы играем</h3>
+            <p class="muted">Голосуем с теплом и юмором, но без накруток: куки и IP следят, чтобы каждый сказал своё слово только один раз.</p>
+            <div class="actions">
+                <a class="btn primary" href="{{ url_for('vote') }}">Проголосовать</a>
+                <a class="btn ghost" href="{{ url_for('thanks') }}">Как выглядит финал</a>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="section alt reveal" id="vibe">
     <div class="section__header">
         <div>

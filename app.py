@@ -169,10 +169,12 @@ def seed_default_data():
     nominee_total = db.execute("SELECT COUNT(*) AS total FROM nominees").fetchone()
     expected_total = len(DEFAULT_NOMINATIONS)
     expected_nominees = expected_total * len(NOMINEE_POOL)
-    if existing["total"] != expected_total or nominee_total["total"] != expected_nominees:
-        db.execute("DELETE FROM votes")
-        db.execute("DELETE FROM nominees")
-        db.execute("DELETE FROM nominations")
+    if existing["total"] == expected_total and nominee_total["total"] == expected_nominees:
+        return
+
+    db.execute("DELETE FROM votes")
+    db.execute("DELETE FROM nominees")
+    db.execute("DELETE FROM nominations")
 
     for nomination in DEFAULT_NOMINATIONS:
         cursor = db.execute(
@@ -194,6 +196,13 @@ def seed_default_data():
                 ),
             )
     db.commit()
+
+
+@app.before_request
+def ensure_data_ready():
+    if not Path(app.config["DATABASE"]).exists():
+        init_db()
+    seed_default_data()
 
 
 def fetch_nominations():

@@ -7,7 +7,22 @@
             <p class="eyebrow">Голосование</p>
             <h1>Выбирайте ярких представителей</h1>
         </div>
-        <p class="muted">Один пользователь — один голос. Заполните все категории и отправьте выбор — так мы вместе решим, кто главный слейер, мемолог и заводила года.</p>
+        <div class="muted">
+            Один пользователь — один голос. Заполните все категории и отправьте выбор — так мы вместе решим, кто главный слейер, мемолог и заводила года.
+            <br>Мы честно считаем только один набор голосов с устройства и IP, поэтому смело отмечайте фаворитов.
+        </div>
+    </div>
+
+    <div class="vote-legend card glass">
+        <div>
+            <p class="eyebrow">Правила круга</p>
+            <p class="muted">12 категорий · 22 друга · 1 клип «Отправить голос». Выбирайте сердцем: кто смешил, кто поддерживал, кто привозил лучший вайб.</p>
+        </div>
+        <div class="ribbon-actions">
+            <span class="pill">Ставь по одному в каждой категории</span>
+            <span class="pill">Можно поменять до отправки</span>
+            <span class="pill">После — покажем «Спасибо»</span>
+        </div>
     </div>
 
     <form class="vote-form" method="post">
@@ -41,6 +56,7 @@
         {% endfor %}
         <div class="form-actions">
             <button class="btn primary btn-large" type="submit">Отправить голос</button>
+            <a class="btn ghost btn-large" href="{{ url_for('nominations_view') }}">Посмотреть номинантов</a>
         </div>
     </form>
 </section>
