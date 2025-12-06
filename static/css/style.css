@@ -53,6 +53,7 @@ body {
     z-index: 2;
     padding: 28px 0 60px;
 }
+main.container { min-height: 100vh; }
 
 .site-header {
     position: sticky;
@@ -97,9 +98,9 @@ body {
     font-weight: 600;
     padding: 10px 12px;
     border-radius: 12px;
-    transition: color .2s ease, background .2s ease, transform .2s ease;
+    transition: color .2s ease, background .2s ease, box-shadow .2s ease;
 }
-.nav__links a:hover { color: var(--text); background: rgba(255,255,255,0.06); transform: translateY(-1px); }
+.nav__links a:hover { color: var(--text); background: rgba(255,255,255,0.06); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
 
 .cta {
     padding: 10px 16px;
@@ -168,8 +169,9 @@ body {
     font-weight: 700;
     text-decoration: none;
     border: 1px solid transparent;
-    transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
-    min-height: 46px;
+    transition: box-shadow .2s ease, background .2s ease, color .2s ease;
+    min-height: 48px;
+    min-width: 164px;
     white-space: nowrap;
     cursor: pointer;
     appearance: none;
@@ -181,8 +183,8 @@ body {
     box-shadow: 0 12px 32px rgba(124,58,237,0.35);
 }
 .btn.ghost { border-color: rgba(255,255,255,0.18); color: var(--text); background: rgba(255,255,255,0.06); box-shadow: 0 10px 24px rgba(0,0,0,0.25); }
-.btn:hover { transform: translateY(-2px); }
-.btn-large { padding: 14px 22px; font-size: 1rem; }
+.btn:hover { box-shadow: 0 16px 40px rgba(124,58,237,0.25); }
+.btn-large { padding: 14px 22px; font-size: 1rem; min-width: 180px; }
 
 .footer__actions .btn { min-width: 170px; text-align: center; }
 
@@ -282,10 +284,10 @@ body {
     border: 1px solid var(--border);
     border-radius: 14px;
     cursor: pointer;
-    transition: border-color .15s ease, background .2s ease, transform .15s ease;
+    transition: border-color .15s ease, background .2s ease, box-shadow .2s ease;
     background: rgba(255,255,255,0.02);
 }
-.vote-option:hover { border-color: var(--accent-2); transform: translateY(-1px); }
+.vote-option:hover { border-color: var(--accent-2); box-shadow: 0 12px 28px rgba(0,0,0,0.28); }
 .vote-option input { accent-color: var(--accent); position: absolute; opacity: 0; pointer-events: none; }
 .avatar {
     width: 56px;
@@ -359,8 +361,8 @@ body {
     box-shadow: 0 12px 30px rgba(124,58,237,0.35);
 }
 
-.nom-preview { transition: transform .2s ease; }
-.nom-preview:hover { transform: translateY(-4px); }
+.nom-preview { transition: box-shadow .2s ease, background .2s ease; }
+.nom-preview:hover { box-shadow: 0 18px 44px rgba(0,0,0,0.32); background: rgba(255,255,255,0.05); }
 
 .admin-card { padding: 20px 20px 16px; }
 .admin-head { display: flex; justify-content: space-between; gap: 14px; align-items: center; }

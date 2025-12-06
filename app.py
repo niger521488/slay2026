@@ -5,7 +5,7 @@ import uuid
 from datetime import datetime
 from pathlib import Path
 
-from flask import Flask, abort, flash, g, make_response, redirect, render_template, request, url_for
+from flask import Flask, flash, g, make_response, redirect, render_template, request, url_for
 
 BASE_DIR = Path(__file__).resolve().parent
 DB_PATH = BASE_DIR / "awards.db"
@@ -292,29 +292,33 @@ def already_voted():
     return render_template("already_voted.html")
 
 
-def require_admin():
-    expected_token = os.environ.get("ADMIN_TOKEN", "letmein")
+def require_admin_token() -> bool:
+    expected_token = os.getenv("ADMIN_TOKEN", "letmein")
     provided = request.args.get("token")
-    if expected_token and provided != expected_token:
-        abort(403)
+    return provided == expected_token
 
 
 @app.route("/admin")
 def admin():
-    require_admin()
+    if not require_admin_token():
+        return render_template("403.html"), 403
+
     db = get_db()
-    rows = db.execute(
-        """
-        SELECT n.title AS nomination_title,
-               nm.name AS nominee_name,
-               COUNT(v.id) AS vote_count
-        FROM nominations n
-        JOIN nominees nm ON nm.nomination_id = n.id
-        LEFT JOIN votes v ON v.nominee_id = nm.id
-        GROUP BY n.id, nm.id
-        ORDER BY n.id, vote_count DESC
-        """
-    ).fetchall()
+    try:
+        rows = db.execute(
+            """
+            SELECT n.title AS nomination_title,
+                   nm.name AS nominee_name,
+                   COUNT(v.id) AS vote_count
+            FROM nominations n
+            JOIN nominees nm ON nm.nomination_id = n.id
+            LEFT JOIN votes v ON v.nominee_id = nm.id
+            GROUP BY n.id, nm.id
+            ORDER BY n.id, vote_count DESC
+            """
+        ).fetchall()
+    except sqlite3.Error:
+        rows = []
     results: list[dict[str, object]] = []
     current_title: str | None = None
     bucket: list[dict[str, int | str]] = []
