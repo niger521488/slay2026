@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Голос уже отправлен · SLAY KRYSHA{% endblock %}
+{% block content %}
+<section class="section center warning reveal">
+    <p class="eyebrow">Уведомление</p>
+    <h1>Вы уже голосовали</h1>
+    <p class="muted">Мы обнаружили, что с этого устройства или IP голос уже был отправлен. Дважды не получится, но вы всё равно легенда нашего чата. Загляните к номинантам — там много знакомых лиц.</p>
+    <div class="actions">
+        <a class="btn primary" href="{{ url_for('index') }}">Вернуться на главную</a>
+        <a class="btn ghost" href="{{ url_for('nominations_view') }}">Посмотреть номинантов</a>
+    </div>
+</section>
+{% endblock %}

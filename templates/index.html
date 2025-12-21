@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% block title %}SLAY KRYSHA · Главная{% endblock %}
+{% block content %}
+<section class="hero reveal">
+    <div class="hero__text">
+        <p class="eyebrow">SLAY KRYSHA 2025</p>
+        <h1>Премия нашего круга: слей, крышуй, сияй</h1>
+        <p class="lede">Это про друзей, про чат, про тот самый вайб. Мы отмечаем тех, кто задаёт стиль, шутит до слёз, заводит движ и просто появляется — и настроение у всех взлетает.</p>
+        <div class="actions">
+            <a class="btn primary" href="{{ url_for('vote') }}">Перейти к голосованию</a>
+            <a class="btn ghost" href="{{ url_for('nominations_view') }}">Все номинации</a>
+        </div>
+        <div class="hero__stats">
+            <div class="stat">
+                <span class="stat__value">{{ nominations|length }}</span>
+                <span class="stat__label">номинаций, собранных нашим кругом</span>
+            </div>
+            <div class="stat">
+                <span class="stat__value">22</span>
+                <span class="stat__label">друзей в списке — все на равных</span>
+            </div>
+            <div class="stat">
+                <span class="stat__value">1</span>
+                <span class="stat__label">голос на человека — честно и по-дружески</span>
+            </div>
+        </div>
+    </div>
+    <div class="hero__card glass">
+        <div class="pill">Дружеский вайб</div>
+        <h3>Кого отмечаем прямо сейчас</h3>
+        <ul class="hero-list">
+            {% for nomination in nominations %}
+                <li>
+                    <span>{{ loop.index }}.</span>
+                    <div>
+                        <strong>{{ nomination.title }}</strong>
+                        <p>{{ nomination.description }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+<section class="section reveal" id="about">
+    <div class="section__header">
+        <div>
+            <p class="eyebrow">Как это работает</p>
+            <h2>Три шага до победы</h2>
+        </div>
+        <div class="muted">Один пользователь — один голос. Честность держим на куки и IP — потому что дружба дружбой, а правила едины.</div>
+    </div>
+    <div class="grid steps">
+        <div class="card step">
+            <span class="step__badge">1</span>
+            <h3>Смотри номинантов</h3>
+            <p>Изучите короткие профили участников и выберите фаворитов, кто реально заряжает чат.</p>
+        </div>
+        <div class="card step">
+            <span class="step__badge">2</span>
+            <h3>Ставь галочки</h3>
+            <p>Отметьте по одному кандидату в каждой категории, поделитесь своим вайбом и нажмите «Проголосовать».</p>
+        </div>
+        <div class="card step">
+            <span class="step__badge">3</span>
+            <h3>Следи за итогами</h3>
+            <p>После голосования покажем результаты — и торжественно объявим своих героев года.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section reveal" id="squad">
+    <div class="section__header">
+        <div>
+            <p class="eyebrow">Дружеский состав</p>
+            <h2>22 человека в строю — от Захара до Даши</h2>
+        </div>
+        <a class="btn ghost" href="{{ url_for('nominations_view') }}">Посмотреть всех</a>
+    </div>
+    <div class="grid info-grid">
+        <div class="card info-card">
+            <h3>Кто в игре</h3>
+            <p class="muted">Мы собрали всех, кто держал чат живым: лидеры, мемологи, организаторы и те, кто приходит вовремя. Каждый — часть общего движухи.</p>
+            <ul class="pill-list pill-list--dense">
+                {% set people = nominations[0].nominees if nominations else [] %}
+                {% for person in people %}
+                    <li>{{ person.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="card info-card">
+            <h3>Зачем голосовать</h3>
+            <p class="muted">Это не про формальности: мы отмечаем, кто нас смешил, вдохновлял, выручал и заряжал. Твой голос — признание для друга.</p>
+            <div class="mini-stats">
+                <div>
+                    <p class="eyebrow">12</p>
+                    <p class="muted">Категорий, которые показывают всю палитру нашего круга.</p>
+                </div>
+                <div>
+                    <p class="eyebrow">22</p>
+                    <p class="muted">Участника, каждому есть за что поставить лайк и голос.</p>
+                </div>
+                <div>
+                    <p class="eyebrow">1</p>
+                    <p class="muted">Честное правило: один голос — одна любовь.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card info-card">
+            <h3>Как мы играем</h3>
+            <p class="muted">Голосуем с теплом и юмором, но без накруток: куки и IP следят, чтобы каждый сказал своё слово только один раз.</p>
+            <div class="actions">
+                <a class="btn primary" href="{{ url_for('vote') }}">Проголосовать</a>
+                <a class="btn ghost" href="{{ url_for('thanks') }}">Как выглядит финал</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section alt reveal" id="vibe">
+    <div class="section__header">
+        <div>
+            <p class="eyebrow">SLAY KRYSHA Inside</p>
+            <h2>Премия про друзей, мемы и маленькие победы</h2>
+        </div>
+        <a class="btn primary" href="{{ url_for('vote') }}">Проголосовать сейчас</a>
+    </div>
+    <div class="grid info-grid">
+        <div class="card info-card">
+            <h3>Для своих</h3>
+            <p class="muted">Мы выбираем людей, которые поднимали настроение весь год: кто-то приносил мемы, кто-то тащил движ, кто-то просто вовремя приходил на встречу. Всё честно, по-домашнему.</p>
+        </div>
+        <div class="card info-card">
+            <h3>Больше, чем шутки</h3>
+            <p class="muted">Да, мы смеёмся, но за каждой номинацией — реальный вклад: поддержка, забота, организованность, вайб. Отмечаем не только громкие моменты, но и тихие подвиги.</p>
+        </div>
+        <div class="card info-card">
+            <h3>Остаётся в истории</h3>
+            <p class="muted">Этот сайт — цифровой артбук нашей компании. Через год откроем и вспомним, как мы слейли в 2025-м. Подключайся, чтобы твой голос остался в хрониках.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section alt reveal" id="noms-preview">
+    <div class="section__header">
+        <div>
+            <p class="eyebrow">Номинации</p>
+            <h2>Каждая категория — отдельная история</h2>
+        </div>
+        <a class="btn ghost" href="{{ url_for('nominations_view') }}">Смотреть всех номинантов</a>
+    </div>
+    <div class="grid nominees-grid">
+        {% for nomination in nominations %}
+            <div class="card nom-preview">
+                <div class="card__top">
+                    <span class="badge">#{{ loop.index }}</span>
+                    <h3>{{ nomination.title }}</h3>
+                </div>
+                <p class="muted">{{ nomination.description }}</p>
+                <ul class="pill-list">
+                    {% for nominee in nomination.nominees %}
+                        <li>{{ nominee.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}SLAY KRYSHA{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body class="{% block body_class %}{% endblock %}">
+    <div class="bg-grid"></div>
+    <div class="orb orb--one"></div>
+    <div class="orb orb--two"></div>
+    <header class="site-header">
+        <div class="container nav">
+            <a class="logo" href="{{ url_for('index') }}">
+                <span class="logo__dot"></span>
+                SLAY KRYSHA
+            </a>
+            <nav class="nav__links">
+                <a href="{{ url_for('index') }}">Главная</a>
+                <a href="{{ url_for('nominations_view') }}">Номинации</a>
+                <a class="cta" href="{{ url_for('vote') }}">Проголосовать</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-list">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer__grid">
+            <div>
+                <p class="muted">SLAY KRYSHA · дружеская премия 2025</p>
+                <p class="muted">Про свой круг, свой вайб, свои шутки. Здесь мы честно выбираем, кто реально прокачал год.</p>
+            </div>
+            <div class="footer__actions">
+                <a class="btn ghost" href="{{ url_for('vote') }}">Перейти к голосованию</a>
+                <a class="btn primary" href="{{ url_for('nominations_view') }}">Посмотреть номинантов</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

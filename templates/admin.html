@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Админ · SLAY KRYSHA{% endblock %}
+{% block content %}
+<section class="section reveal">
+    <div class="section__header">
+        <div>
+            <p class="eyebrow">Админ-панель</p>
+            <h1>Статистика голосов</h1>
+        </div>
+        <p class="muted">Добавьте к URL параметр <code>?token=...</code> со значением переменной <code>ADMIN_TOKEN</code>. Здесь можно быстро проверить, кто вырывается вперёд и в каких категориях нужен ещё хайп.</p>
+    </div>
+
+    {% if results %}
+        {% for block in results %}
+            <div class="card admin-card">
+                <div class="card__header admin-head">
+                    <div>
+                        <p class="eyebrow">Номинация</p>
+                        <h2>{{ block.title }}</h2>
+                    </div>
+                    <div class="pill">Всего голосов: {{ block.total }}</div>
+                </div>
+                <div class="votes-list">
+                    {% for item in block.items %}
+                        <div class="vote-row">
+                            <div class="vote-row__top">
+                                <span class="name">{{ item.name }}</span>
+                                <span class="count">{{ item.count }}</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress__bar" style="width: {{ item.percent }}%"></div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="card admin-card center">
+            <p class="muted">Пока нет данных. Инициализируйте базу или дождитесь первых голосов.</p>
+        </div>
+    {% endif %}
+</section>
+{% endblock %}
